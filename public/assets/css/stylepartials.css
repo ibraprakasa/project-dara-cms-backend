@@ -1,0 +1,155 @@
+.truncate-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    /* Atur lebar maksimum yang Anda inginkan */
+}
+
+.bi {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.filter{
+    margin-top:100px; 
+    margin-left:27px;
+}
+
+.filter .dropdown-item:hover {
+    background-color: #3B4B65;
+  }
+  
+.btn-secondary:hover {
+    background-color: white;
+    color: black; /* Anda juga mungkin perlu mengatur warna teks saat hover sesuai kebutuhan Anda */
+  }
+
+.kolom{
+    background-color:#D9D9D9
+}
+
+.custom-button{
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.resizable {
+    resize: both; /* Memungkinkan pengguna untuk menarik textarea */
+    overflow: auto; /* Menampilkan scroll jika konten melebihi ukuran textarea */
+    min-height: 250px; /* Tinggi minimum awal textarea */
+  }
+
+  #gambar {
+    background-color: #000000; /* Warna latar belakang */
+    color: #FFF; /* Warna teks */
+    padding: 10px; /* Padding untuk elemen */
+    border: 1px solid #cccccc; /* Border untuk elemen */
+    border-radius: 5px; /* Border-radius untuk sudut elemen */
+}
+
+.whitebold{
+    color: white; 
+    font-weight:bold;
+}
+
+.tabel-aktif {
+    background-color: rgba(59, 75, 101, 1);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: white !important;
+}
+
+
+.tabel-mati {
+    background-color: rgba(217, 217, 217, 1);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    color: rgba(94, 94, 94, 1);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.dropdown-menu a {
+    border-bottom: 1px solid #3B4B65; /* Garis bawah untuk setiap item */
+    padding: 5px 10px; /* Jarak di atas dan bawah serta kiri dan kanan item */
+    display: block; /* Membuat item menjadi elemen blok untuk mengisi lebar container */
+}
+
+.dropdown-menu a:last-child {
+    border-bottom: none; /* Menghapus garis bawah dari item terakhir */
+}
+
+.input {
+    width: 50%; /* Ganti dengan lebar yang sesuai */
+  }
+
+  .password-input-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top:-10px;
+    margin-bottom:-10px;
+  }
+  
+  .password-input-wrapper .form-control {
+    flex-grow: 1;
+    max-width: 50%;
+    margin-right: 10px; /* Untuk memberikan jarak antara input dan tombol */
+  }
+  
+  .password-input-wrapper .edit-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        background-color: #03A13B;
+        height: 35px;
+        width:50px;
+        padding: 0; /* Menghapus padding default tombol */
+      
+  }
+  
+.alert-container {
+    display: flex;
+    width:50%;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #EB1F3E; /* Warna merah */
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+}
+
+.alert-container1 {
+    display: flex;
+    width:50%;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #03A13B; /* Warna merah */
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+}
+
+.alert-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.waduh tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+/* CSS untuk mengatur warna latar belakang baris genap */
+.waduh tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
