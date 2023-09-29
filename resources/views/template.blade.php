@@ -77,15 +77,17 @@ Coded by www.creative-tim.com
 
   </script>
 
-  <script>
+ <script>
   $(document).ready(function() {
-    var currentUrl = window.location.href;
+    // Mendapatkan path URL saat ini
+    var currentPath = window.location.pathname;
+
     var titleElement = document.querySelector('.navbar-brand');
 
     // Loop melalui setiap tautan sidebar
     $(".sidebar a").each(function() {
-      // Memeriksa apakah tautan saat ini sesuai dengan URL saat ini
-      if ($(this).attr("href") === currentUrl) {
+      // Memeriksa apakah tautan saat ini sesuai dengan path URL saat ini
+      if ($(this).attr("href") === currentPath) {
         // Mengubah warna latar belakang sidebar
         $(".active").css("background-color", "#1B77A0");
         return false; // Berhenti dari loop jika tautan cocok
@@ -106,26 +108,29 @@ Coded by www.creative-tim.com
       // Tambahkan halaman lain dan judulnya di sini
     };
 
-    // Mendapatkan nama halaman dari URL
-    var currentPage = window.location.href;
-    currentPage = currentPage.split('/').pop(); // Mengambil bagian terakhir dari URL
+    // Mendapatkan nama halaman dari path URL saat ini
+    var currentPage = currentPath.split('/').pop();
 
     // Simpan judul asli sebelumnya
     var originalTitle = pageTitleMap[currentPage] || '';
 
+    // Jika ada parameter pencarian, tambahkan "Hasil Pencarian: [searchParam]" ke judul
     if (searchParam) {
-      // Tambahkan "HASIL PENCARIAN: [searchParam]" jika parameter pencarian ada
-      pageTitleMap[currentPage] = originalTitle + (originalTitle ? ': ' : '') + 'Hasil Pencarian untuk ' + searchParam +' :';
+      // titleElement.innerHTML = originalTitle + ' - Hasil Pencarian: ' + searchParam;
+      titleElement.innerHTML = originalTitle;
       $(".active").css("background-color", "#1B77A0");
+    } else {
+      // Jika tidak ada parameter pencarian, tampilkan judul asli
+      titleElement.innerHTML = originalTitle;
+      $(".active").css("background-color", "#1B77A0");
+
     }
 
-    // Mengubah judul berdasarkan halaman yang aktif
-    if (pageTitleMap[currentPage]) {
-      titleElement.innerHTML = pageTitleMap[currentPage];
-      titleElement.style.visibility = 'visible';
-    }
+    // Tampilkan judul
+    titleElement.style.visibility = 'visible';
   });
 </script>
+
 
 
 </body>
