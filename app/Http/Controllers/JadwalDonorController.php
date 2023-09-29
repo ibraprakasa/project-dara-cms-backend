@@ -23,7 +23,7 @@ class JadwalDonorController extends Controller
 
     public function insertjadwaldonor(Request $request)
     {
-        JadwalDonor::create($request->only('lokasi', 'alamat_donor', 'tanggal_donor', 'jam_mulai', 'jam_selesai', 'kontak'));
+        JadwalDonor::create($request->all());
         return redirect()->route('jadwaldonor')->with('success','Jadwal berhasil ditambahkan.');    
     }
 

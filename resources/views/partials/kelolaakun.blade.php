@@ -92,16 +92,16 @@
                 <td>{{ $row->golongandarah->nama }}</td>
                 <td>{{ $row->berat_badan }} KG</td>
                 <td>{{ $row->kontak_pendonor }}</td>
-                <td>{{ $row->email_pendonor }}</td>
+                <td>{{ $row->email }}</td>
                 <td>{{ $row->alamat_pendonor }}</td>
                 <td>{{ $row->created_at->diffForHumans() }}</td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#editpendonor{{ $row->id_pendonor }}">
+                    <button class="custom-button" data-toggle="modal" data-target="#editpendonor{{ $row->id }}">
                         <i class="bi bi-pencil-square" style="color:#03A13B;"></i>
                     </button>
                 </td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#deletependonor{{ $row->id_pendonor }}">
+                    <button class="custom-button" data-toggle="modal" data-target="#deletependonor{{ $row->id }}">
                         <i class="bi bi-trash3" style="color:#E70000;"></i>
                     </button>
                 </td>
@@ -236,7 +236,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="kontak">Email</label>
-                        <input class="kolom form-control" name="email_pendonor" type="email" id="email" placeholder="ex : ibraprakasa5@gmail.com">
+                        <input class="kolom form-control" name="email" type="email" id="email" placeholder="ex : ibraprakasa5@gmail.com">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="tanggallahir">Tanggal Lahir</label>
@@ -271,7 +271,7 @@
 
 <!-- MODAL EDIT PENDONOR -->
 @foreach($data as $row)
-<div class="modal fade" id="editpendonor{{ $row->id_pendonor }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade" id="editpendonor{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -280,7 +280,7 @@
               <span aria-hidden=" true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('updatependonorsuper', ['id' => $row->id_pendonor]) }}" method="POST">
+            <form action="{{ route('updatependonorsuper', ['id' => $row->id]) }}" method="POST">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group" style="color:black; font-weight:bold">
@@ -297,7 +297,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="email">Email</label>
-                        <input class="kolom form-control" name="email_pendonor" type="email" id="email" value="{{ $row->email_pendonor }}">
+                        <input class="kolom form-control" name="email" type="email" id="email" value="{{ $row->email }}">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="tanggallahir">Tanggal Lahir</label>
@@ -324,7 +324,7 @@
 
 <!-- MODAL DELETE JADWAL DONOR -->
 @foreach($data as $key => $row)
-<div class="modal fade" id="deletependonor{{ $row->id_pendonor }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deletependonor{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -336,7 +336,7 @@
             <div class="modal-body">
                 Apakah Anda yakin untuk menghapus data di baris {{ $key+1 }}?
             </div>
-            <form action="{{ route('deletependonorsuper', ['id' => $row->id_pendonor]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('deletependonorsuper', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">

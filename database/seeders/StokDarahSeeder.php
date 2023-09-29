@@ -17,7 +17,7 @@ class StokDarahSeeder extends Seeder
 
         $existingRecord = DB::table('golongandarah')->where('nama', 'AB')->first();
 
-        $golonganDarah = $existingRecord->id_goldar;
+        $golonganDarah = $existingRecord->id;
 
         StokDarah::create(array(
             'gol_darah' => $golonganDarah, // Mengacu pada kolom 'id_goldar' di tabel 'golongandarah'

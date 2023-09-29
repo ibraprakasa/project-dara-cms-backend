@@ -28,18 +28,18 @@ class DatabaseSeeder extends Seeder
 
         $jadwalDonor = DB::table('jadwaldonor')->insertGetId(array(
             'lokasi' => 'Tabing',
-            'alamat_donor' => 'M Thalin',
+            'alamat' => 'M Thalin',
             'tanggal_donor' => '2023-07-15',
             'jam_mulai' => '09:00',
             'jam_selesai' => '15:00',
             'kontak' => '082235221661',
+            'jumlah_pendonor' => 20,
             'latitude' => 121.4567890,
             'longitude' => 15.6789012,
         ));
 
         JadwalPendonor::create(array(
-            'no_urut' => 5,
-            'id_jadwal_donor' => $jadwalDonor,
+            'id_jadwal_donor_darah' => $jadwalDonor,
             'id_pendonor' => 2
         ));
         // END
@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
             'id_golongan_darah'=> $golonganDarah,
             'berat_badan' => 47,
             'kontak_pendonor' => '08877541516',
-            'email_pendonor' => 'ibraprakasa51@gmail.com',
+            'email' => 'ibraprakasa51@gmail.com',
             'alamat_pendonor' => 'Jambi',
             'password' => Hash::make('ibra123'),
             'stok_darah_tersedia' =>0,
@@ -75,14 +75,14 @@ class DatabaseSeeder extends Seeder
 
         //RIWAYAT DONOR TO PENDONOR
         $pendonor = DB::table('pendonor')->insertGetId(array(
-            'nama' => 'Oktaviani Prakasa',
+            'nama' => 'Oktaviani Pratiwi',
             'tanggal_lahir' => '2001-06-10',
             'kode_pendonor' => 'dara'.rand(10000, 99999),
             'jenis_kelamin' => 'Perempuan',
             'id_golongan_darah'=> $golonganDarah,
             'berat_badan' => 60,
             'kontak_pendonor' => '08877541516',
-            'email_pendonor' => 'okta05532@gmail.com',
+            'email' => 'okta05532@gmail.com',
             'alamat_pendonor' => 'Jambi',
             'password' => Hash::make('viani12345'),
             'stok_darah_tersedia' =>3,

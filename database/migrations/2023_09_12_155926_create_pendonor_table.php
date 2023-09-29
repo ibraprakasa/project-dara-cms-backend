@@ -14,16 +14,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pendonor', function (Blueprint $table) {
-            $table->id('id_pendonor');
+            $table->id();
             $table->string("gambar",255)->nullable();
             $table->string('nama', 100)->nullable(false);
             $table->string('kode_pendonor', 10)->nullable(false)->unique();
+            $table->string('email', 100)->nullable(false)->unique();
             $table->date('tanggal_lahir')->nullable(false);
-            $table->enum('jenis_kelamin',['laki-laki','perempuan'])->nullable(false);
+            $table->enum('jenis_kelamin',['Laki-laki','Perempuan'])->nullable(false);
             $table->unsignedBigInteger('id_golongan_darah')->nullable(false);
             $table->integer('berat_badan')->nullable(false);
             $table->string('kontak_pendonor', 20)->nullable(false);
-            $table->string('email_pendonor', 50)->nullable(false);
             $table->string('alamat_pendonor', 100)->nullable(false);
             $table->string('password', 100)->nullable(false);
             $table->integer('stok_darah_tersedia')->nullable();

@@ -49,7 +49,7 @@
                 <th scope="row">{{ $key+1 }}</th>
                 <td>{{ $rd->nama }}</td>
                 <td>{{ $rd->jumlah_donor }}</td>
-                <td>{{ $rd->tanggal_donor }}</td>
+                <td>{{ date('F jS, Y', strtotime($rd->tanggal_donor)) }}</td>
                 <td>{{ $rd->gol_darah }}</td>
             </tr>
             @endforeach
@@ -74,7 +74,7 @@
                     <th scope="row">{{ $key+1 }}</th>
                     <td>{{ $rd->nama }}</td>
                     <td>{{ $rd->jumlah_ambil }}</td>
-                    <td>{{ $rd->tanggal_ambil }}</td>
+                    <td>{{ date('F jS, Y', strtotime($rd->tanggal_ambil)) }}</td>
                     <td>{{ $rd->gol_darah }}</td>
                     <td>{{ $rd->penerima }}</td>
                     <td>{{ $rd->kontak_penerima }}</td>

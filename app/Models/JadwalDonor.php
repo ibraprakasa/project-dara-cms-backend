@@ -10,11 +10,11 @@ class JadwalDonor extends Model
     use HasFactory;
 
     protected $table = 'jadwaldonor';
-    protected $primaryKey = 'id_jadwal_donor';
+    protected $primaryKey = 'id';
     protected $guarded = [];
 
     public function jadwalPendonor()
     {
-        return $this->hasMany(JadwalPendonor::class, 'id_jadwal_donor');
+        return $this->hasMany(JadwalPendonor::class, 'id');
     }
 }

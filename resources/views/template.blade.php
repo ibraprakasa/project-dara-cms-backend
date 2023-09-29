@@ -41,7 +41,7 @@ Coded by www.creative-tim.com
       <!-- Navbar -->
       <nav class="navbar" style="margin-bottom:-80px">
         <div class="title">
-          <a class="navbar-brand" href="javascript:;" style="visibility: hidden;margin-left:12px;margin-top:10px;border-radius:10px;text-align:center;width:250px;background-color:#3B4B65; color:white; font-weight:bold">
+          <a class="navbar-brand" href="javascript:;" style="visibility: hidden;margin-left:12px;margin-top:10px;border-radius:10px;text-align:center;width:350px;background-color:#3B4B65; color:white; font-weight:bold">
             Title
           </a>
         </div>
@@ -74,60 +74,59 @@ Coded by www.creative-tim.com
     });
   </script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  
+
   </script>
 
   <script>
-    $(document).ready(function() {
+  $(document).ready(function() {
+    var currentUrl = window.location.href;
+    var titleElement = document.querySelector('.navbar-brand');
 
-      var currentUrl = window.location.href;
-
-      // Loop melalui setiap tautan sidebar
-      $(".sidebar a").each(function() {
-        // Memeriksa apakah tautan saat ini sesuai dengan URL saat ini
-        if ($(this).attr("href") === currentUrl) {
-          // Mengubah warna latar belakang sidebar
-          $(".active").css("background-color", "#1B77A0");
-          return false; // Berhenti dari loop jika tautan cocok
-        }
-      });
+    // Loop melalui setiap tautan sidebar
+    $(".sidebar a").each(function() {
+      // Memeriksa apakah tautan saat ini sesuai dengan URL saat ini
+      if ($(this).attr("href") === currentUrl) {
+        // Mengubah warna latar belakang sidebar
+        $(".active").css("background-color", "#1B77A0");
+        return false; // Berhenti dari loop jika tautan cocok
+      }
     });
-</script>
 
-  <script>
-    // Mendapatkan nama halaman dari URL
-    var currentPage = window.location.href;
-    currentPage = currentPage.split('/').pop(); // Mengambil bagian terakhir dari URL
-
-    // Membuat objek untuk memetakan judul halaman
+    // Mendapatkan parameter query 'search' dari URL
+    var searchParam = new URLSearchParams(window.location.search).get('search');
     var pageTitleMap = {
       'dashboard': 'DASHBOARD',
       'stokdarah': 'STOK DARAH',
       'riwayatdonor': 'RIWAYAT',
       'jadwaldonor': 'JADWAL DONOR',
       'kelolaakun': 'KELOLA AKUN',
-      'datapendonor' : 'DATA PENDONOR',
-      'berita': 'BERITA',
+      'datapendonor': 'DATA PENDONOR',
+      'berita': 'BERITA DONOR',
       'akun': 'AKUN',
       // Tambahkan halaman lain dan judulnya di sini
     };
 
-    // Mendapatkan elemen dengan class "title"
-    var titleElement = document.querySelector('.navbar-brand');
+    // Mendapatkan nama halaman dari URL
+    var currentPage = window.location.href;
+    currentPage = currentPage.split('/').pop(); // Mengambil bagian terakhir dari URL
+
+    // Simpan judul asli sebelumnya
+    var originalTitle = pageTitleMap[currentPage] || '';
+
+    if (searchParam) {
+      // Tambahkan "HASIL PENCARIAN: [searchParam]" jika parameter pencarian ada
+      pageTitleMap[currentPage] = originalTitle + (originalTitle ? ': ' : '') + 'Hasil Pencarian untuk ' + searchParam +' :';
+      $(".active").css("background-color", "#1B77A0");
+    }
 
     // Mengubah judul berdasarkan halaman yang aktif
     if (pageTitleMap[currentPage]) {
       titleElement.innerHTML = pageTitleMap[currentPage];
       titleElement.style.visibility = 'visible';
     }
-  </script>
-  <script>
-    function validasiInput(input) {
-      if (input.value.length > 8) {
-        input.value = input.value.slice(0, 8); // Membatasi input hingga 8 digit
-      }
-    }
-  </script>
+  });
+</script>
+
 
 </body>
 

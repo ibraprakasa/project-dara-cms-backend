@@ -15,12 +15,12 @@ class GolonganDarah extends Model
 
     public function pendonor()
     {
-        return $this->hasMany(Pendonor::class, 'id_golongan_darah', 'id_goldar');
+        return $this->hasMany(Pendonor::class, 'id_golongan_darah', 'id');
     }
 
     public function stokDarah()
     {
-        return $this->hasMany(StokDarah::class, 'gol_darah', 'id_goldar');
+        return $this->hasMany(StokDarah::class, 'gol_darah', 'id');
     }
 }
 

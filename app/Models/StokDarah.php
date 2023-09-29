@@ -15,7 +15,7 @@ class StokDarah extends Model
 
     public function golonganDarah()
     {
-        return $this->belongsTo(GolonganDarah::class, 'gol_darah', 'id_goldar');
+        return $this->belongsTo(GolonganDarah::class, 'gol_darah', 'id');
     }
 
 }

@@ -12,12 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jadwalpendonor', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_jadwal_donor');
-            $table->unsignedBigInteger('id_pendonor');
-
-            $table->index('id_jadwal_donor');
-            $table->index('id_pendonor');
-            $table->integer('no_urut');
+            $table->id();
+            $table->unsignedBigInteger('id_jadwal_donor_darah')->nullable(false);
+            $table->unsignedBigInteger('id_pendonor')->nullable(false);
             $table->timestamps();
         });
     }

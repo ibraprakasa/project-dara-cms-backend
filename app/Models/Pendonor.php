@@ -10,21 +10,21 @@ class Pendonor extends Model
     use HasFactory;
 
     protected $table = 'pendonor';
-    protected $primaryKey = 'id_pendonor';
+    protected $primaryKey = 'id';
     protected $guarded = [];
 
     public function jadwalPendonor()
     {
-        return $this->hasMany(JadwalPendonor::class, 'id_pendonor','id_pendonor');
+        return $this->hasMany(JadwalPendonor::class, 'id_pendonor','id');
     }
 
     public function golonganDarah()
     {
-        return $this->belongsTo(GolonganDarah::class, 'id_golongan_darah', 'id_goldar');
+        return $this->belongsTo(GolonganDarah::class, 'id_golongan_darah', 'id');
     }
 
     public function riwayatDonor()
     {
-        return $this->hasMany(RiwayatDonor::class, 'pendonor_id', 'id_pendonor');
+        return $this->hasMany(RiwayatDonor::class, 'pendonor_id', 'id');
     }
 }

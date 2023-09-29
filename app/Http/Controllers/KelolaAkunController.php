@@ -32,7 +32,6 @@ class KelolaAkunController extends Controller
             'jenis_kelamin' => 'required|in:laki-laki,perempuan',
         ]);
 
-
         Pendonor::create($request->all());
         return redirect()->route('kelolaakun')->with('success','Pendonor berhasil ditambahkan.');    
     }

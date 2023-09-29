@@ -15,6 +15,6 @@ class RiwayatDonor extends Model
 
     public function pendonor()
     {
-        return $this->belongsTo(Pendonor::class, 'pendonor_id', 'id_pendonor');
+        return $this->belongsTo(Pendonor::class, 'pendonor_id', 'id');
     }
 }

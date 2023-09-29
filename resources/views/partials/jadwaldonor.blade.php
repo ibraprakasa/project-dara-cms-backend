@@ -70,7 +70,7 @@
             <tr>
                 <th scope="row">{{ $key+1 }}</th>
                 <td>{{ $row->lokasi }}</td>
-                <td class="truncate-text">{{ $row->alamat_donor }}</td>
+                <td class="truncate-text">{{ $row->alamat }}</td>
                 <td>{{ $row->tanggal_donor }}</td>
                 <td>{{ $row->jam_mulai }}</td>
                 <td>{{ $row->jam_selesai }}</td>
@@ -78,12 +78,12 @@
                 <td>20</td>
                 <!-- <td>-</td> -->
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#editjadwaldonor{{ $row->id_jadwal_donor }}">
+                    <button class="custom-button" data-toggle="modal" data-target="#editjadwaldonor{{ $row->id }}">
                         <i class="bi bi-pencil-square" style="color:#03A13B;"></i>
                     </button>
                 </td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#deletejadwaldonor{{ $row->id_jadwal_donor }}">
+                    <button class="custom-button" data-toggle="modal" data-target="#deletejadwaldonor{{ $row->id }}">
                         <i class="bi bi-trash3" style="color:#E70000;"></i>
                     </button>
                 </td>
@@ -117,7 +117,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="alamat">Alamat</label>
-                        <textarea class="kolom form-control" name="alamat_donor" id="alamat" rows="3" placeholder="Jalan Tarandam III No 27b"></textarea>
+                        <textarea class="kolom form-control" name="alamat" id="alamat" rows="3" placeholder="Jalan Tarandam III No 27b"></textarea>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="tanggal">Tanggal</label>
@@ -134,6 +134,10 @@
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="kontak">Kontak</label>
                         <input class="kolom form-control" name="kontak" type="number" id="kontak" placeholder="ex : 082235221771">
+                    </div>
+                    <div class="form-group" style="color:black; font-weight:bold">
+                        <label for="jumlah_pendonor">Jumlah Pendonor</label>
+                        <input class="kolom form-control" name="jumlah_pendonor" type="number" id="jumlahpendonor" placeholder="20">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="longitude">Longitude</label>
@@ -155,7 +159,7 @@
 
 <!-- MODAL EDIT JADWAL DONOR -->
 @foreach($data as $row)
-<div class="modal fade" id="editjadwaldonor{{ $row->id_jadwal_donor }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade" id="editjadwaldonor{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -165,7 +169,7 @@
                 </button>
             </div>
                 <div class="modal-body">
-                <form action="{{ route('updatejadwaldonor', ['id' => $row->id_jadwal_donor]) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('updatejadwaldonor', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="namalokasi">Nama Lokasi</label>
@@ -173,7 +177,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="alamat">Alamat</label>
-                        <textarea class="kolom form-control" name="alamat_donor" id="alamat" rows="3">{{ $row->alamat_donor }}
+                        <textarea class="kolom form-control" name="alamat" id="alamat" rows="3">{{ $row->alamat }}
                         </textarea>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
@@ -191,6 +195,10 @@
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="kontak">Kontak</label>
                         <input class="kolom form-control" name="kontak" type="number" id="kontak" value="{{ $row->kontak }}">
+                    </div>
+                    <div class="form-group" style="color:black; font-weight:bold">
+                        <label for="jumlah_pendonor">Jumlah Pendonor</label>
+                        <input class="kolom form-control" name="jumlah_pendonor" type="number" id="jumlahpendonor"value="{{ $row->jumlah_pendonor }}">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="longitude">Longitude</label>
@@ -220,7 +228,7 @@
 
 <!-- MODAL DELETE JADWAL DONOR -->
 @foreach($data as $key => $row)
-<div class="modal fade" id="deletejadwaldonor{{ $row->id_jadwal_donor }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deletejadwaldonor{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -232,7 +240,7 @@
             <div class="modal-body">
             Apakah Anda yakin untuk menghapus data di baris {{ $key+1 }}?
             </div>
-            <form action="{{ route('deletejadwaldonor', ['id' => $row->id_jadwal_donor]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('deletejadwaldonor', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">

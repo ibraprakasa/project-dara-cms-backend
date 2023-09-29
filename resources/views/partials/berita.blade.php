@@ -73,12 +73,12 @@
                 <td class="truncate-text">{{ $row->deskripsi }}</td>
                 <td>{{ $row->created_at->diffForHumans() }}</td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#editberita{{ $row->id_berita }}">
+                    <button class="custom-button" data-toggle="modal" data-target="#editberita{{ $row->id }}">
                         <i class="bi bi-pencil-square" style="color:#03A13B;"></i>
                     </button>
                 </td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#deleteberita{{ $row->id_berita }}">
+                    <button class="custom-button" data-toggle="modal" data-target="#deleteberita{{ $row->id }}">
                         <i class="bi bi-trash3" style="color:#E70000;"></i>
                     </button>
                 </td>
@@ -130,7 +130,7 @@
 
 <!-- MODAL EDIT BERITA -->
 @foreach($data as $row)
-<div class="modal fade" id="editberita{{ $row->id_berita }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade" id="editberita{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -139,16 +139,16 @@
               <span aria-hidden=" true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('updateberita', ['id' => $row->id_berita]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('updateberita', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="gambar{{ $row->id_berita }}" class="btn btn-primary" style="background-color: #3B4B65;">
+                        <label for="gambar{{ $row->id }}" class="btn btn-primary" style="background-color: #3B4B65;">
                             <i class="col pl-1 bi bi-image"></i>
                             <span style="color: white;" class="pilih-text">Pilih Gambar</span>
                         </label>
-                        <input class="kolom form-control" name="gambar" type="file" id="gambar{{ $row->id_berita }}" style="display: none;">
-                        <span id="keterangan-gambar{{ $row->id_berita }}" style="color: black;">{{ $row->gambar }}</span>
+                        <input class="kolom form-control" name="gambar" type="file" id="gambar{{ $row->id }}" style="display: none;">
+                        <span id="keterangan-gambar{{ $row->id }}" style="color: black;">{{ $row->gambar }}</span>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="judulberita">Judul Berita</label>
@@ -172,7 +172,7 @@
 
 <!-- MODAL DELETE BERITA -->
 @foreach($data as $key => $row)
-<div class="modal fade" id="deleteberita{{ $row->id_berita }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteberita{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -184,7 +184,7 @@
             <div class="modal-body">
                 Apakah Anda yakin untuk menghapus data di baris {{ $key+1 }}?
             </div>
-            <form action="{{ route('deleteberita', ['id' => $row->id_berita]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('deleteberita', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">

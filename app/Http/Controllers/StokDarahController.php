@@ -35,8 +35,8 @@ class StokDarahController extends Controller
 
         // Cari data stok darah berdasarkan kode pendonor yang dipilih
         $findPendonor = Pendonor::where('kode_pendonor', $kode_pendonor)->first();
-        $gol_darah = GolonganDarah::where('id_goldar',$findPendonor->id_golongan_darah)->first();
-        $stokDarah = StokDarah::where('gol_darah', $gol_darah->id_goldar)->first();
+        $gol_darah = GolonganDarah::where('id',$findPendonor->id_golongan_darah)->first();
+        $stokDarah = StokDarah::where('gol_darah', $gol_darah->id)->first();
 
         if ($stokDarah) {
             // Jika data stok darah dengan golongan darah yang sama sudah ada, tambahkan jumlahnya
@@ -46,14 +46,14 @@ class StokDarahController extends Controller
         } else {
             // Jika tidak ada data stok darah dengan golongan darah yang sama, buat entri baru
             $stokDarah = new StokDarah();
-            $stokDarah->gol_darah = $gol_darah->id_goldar;
+            $stokDarah->gol_darah = $gol_darah->id;
             $stokDarah->jumlah = $jumlah;
             $stokDarah->save();
         }
 
         //masukkan ke dalam riwayat donor
         RiwayatDonor::create([
-            'pendonor_id' => $findPendonor->id_pendonor,
+            'pendonor_id' => $findPendonor->id,
             'jumlah_donor' => $jumlah,
             'tanggal_donor' => now()
         ]);
@@ -82,8 +82,8 @@ class StokDarahController extends Controller
 
         // Cari data stok darah berdasarkan kode pendonor yang dipilih
         $findPendonor = Pendonor::where('kode_pendonor', $kode_pendonor)->first();
-        $gol_darah = GolonganDarah::where('id_goldar',$findPendonor->id_golongan_darah)->first();
-        $stokDarah = StokDarah::where('gol_darah', $gol_darah->id_goldar)->first();
+        $gol_darah = GolonganDarah::where('id',$findPendonor->id_golongan_darah)->first();
+        $stokDarah = StokDarah::where('gol_darah', $gol_darah->id)->first();
 
         if ($stokDarah) {
             // Jika data stok darah dengan golongan darah yang sama sudah ada, tambahkan jumlahnya
@@ -99,7 +99,7 @@ class StokDarahController extends Controller
 
         //masukkan ke riwayat ambil
         RiwayatAmbil::create([
-             'pendonor_id' => $findPendonor->id_pendonor,
+             'pendonor_id' => $findPendonor->id,
              'jumlah_ambil' => $jumlah,
              'penerima' => $penerima,
              'kontak_penerima' => $kontak_penerima,
