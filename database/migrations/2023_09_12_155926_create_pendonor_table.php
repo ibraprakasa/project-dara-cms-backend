@@ -24,7 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_golongan_darah')->nullable(false);
             $table->integer('berat_badan')->nullable(false);
             $table->string('kontak_pendonor', 20)->nullable(false);
-            $table->string('alamat_pendonor', 100)->nullable(false);
+            $table->string('alamat', 100)->nullable(false);
             $table->string('password', 100)->nullable(false);
             $table->integer('stok_darah_tersedia')->nullable();
             $table->timestamps();
