@@ -10,11 +10,12 @@
 </head>
 
 <div class="filter btn-group">
-    <input class="btn" type="text" placeholder="Cari Lokasi..." style="background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
-    </input>
-    <button type="button" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
-        <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
-    </button>
+    <form action="/jadwaldonor" method="GET" style="display: flex;">
+        <input class="btn" type="search" name="search" placeholder="Cari Lokasi..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
+        <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+            <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
+        </button>
+    </form>
 </div>
 
 <div class="filter btn-group">
@@ -23,11 +24,28 @@
         <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
     </button>
 
-    <button class="btn btn-secondary" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+    <button class="btn btn-secondary" type="button" data-toggle="modal" data-target=".tambahjadwaldonor" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
         Tambah
     </button>
 
 </div>
+<div class="filter btn-group wow">
+@if(session('error'))
+  <div class="alert-container">
+    <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+    <div>
+      {{ session('error') }}
+    </div>
+  </div>
+  @elseif(session('success'))
+  <div class="alert-container1 success">
+    <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+    <div>
+      {{ session('success') }}
+    </div>
+  </div>
+  @endif
+  </div>
 
 
 

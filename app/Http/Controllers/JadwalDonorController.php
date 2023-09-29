@@ -9,14 +9,22 @@ class JadwalDonorController extends Controller
 {
     public function index()
     {
+
         $data = JadwalDonor::all();
+        if(isset($_GET['search'])){
+            $search = $_GET['search'];
+            $data = JadwalDonor::where('lokasi', 'LIKE', '%' . $search . '%')->get();
+        } else {
+            $data = JadwalDonor::all();
+        }
+
         return view('partials.jadwaldonor', compact('data'));
     }
 
     public function insertjadwaldonor(Request $request)
     {
         JadwalDonor::create($request->only('lokasi', 'alamat_donor', 'tanggal_donor', 'jam_mulai', 'jam_selesai', 'kontak'));
-        return redirect()->route('jadwaldonor');
+        return redirect()->route('jadwaldonor')->with('success','Jadwal berhasil ditambahkan.');    
     }
 
     public function updatejadwaldonor(Request $request, $id)
@@ -27,7 +35,7 @@ class JadwalDonorController extends Controller
         // Memperbarui data dengan nilai dari $request->all()
         $jadwalDonor->update($request->all());
 
-        return redirect()->route('jadwaldonor');
+        return redirect()->route('jadwaldonor')->with('success','Jadwal berhasil diperbarui.');    
     }
 
     public function deletejadwaldonor($id){
@@ -35,7 +43,7 @@ class JadwalDonorController extends Controller
 
         $jadwalDonor ->delete();
 
-        return redirect()->route('jadwaldonor');
+        return redirect()->route('jadwaldonor')->with('success','Jadwal berhasil dihapus.');    
     }
 
 }

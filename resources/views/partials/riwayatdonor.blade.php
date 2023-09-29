@@ -23,12 +23,21 @@
     <div class="col"></div>
 </div>
 
+<div class="waw btn-group" style="margin-top:75px; margin-bottom:-90px">
+    <form action="/riwayatdonor" method="GET" style="display: flex;">
+        <input class="btn" type="search" name="search" placeholder="Cari Riwayat..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
+        <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+            <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
+        </button>
+    </form>
+</div>
+
 <div class="content">
-    <table class="table table-bordered" id="tabel1" style="display:none;text-align:center; width:1px">
+    <table class="table table-bordered" id="tabel1" style="display:none">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">No. Pendonor</th>
+                <th scope="col">Nama</th>
                 <th scope="col">Jumlah Donor</th>
                 <th scope="col">Tanggal</th>
                 <th scope="col">Gol. Darah</th>
@@ -47,11 +56,11 @@
         </tbody>
     </table>
 
-    <table class="table table-bordered" id="tabel2" style="text-align:center; width:1px">
+    <table class="table table-bordered" id="tabel2">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">No. Pendonor</th>
+                <th scope="col">Nama</th>
                 <th scope="col">Jumlah Ambil</th>
                 <th scope="col">Tanggal</th>
                 <th scope="col">Gol. Darah</th>
@@ -60,15 +69,15 @@
             </tr>
         </thead>
         <tbody class="waduh">
-            @foreach($riwayat_donor as $key => $rd)
+            @foreach($riwayat_ambil as $key => $rd)
                 <tr>
                     <th scope="row">{{ $key+1 }}</th>
                     <td>{{ $rd->nama }}</td>
                     <td>{{ $rd->jumlah_ambil }}</td>
-                    <td>{{ $rd->tanggal_donor }}</td>
+                    <td>{{ $rd->tanggal_ambil }}</td>
                     <td>{{ $rd->gol_darah }}</td>
-                    <td>Penerima</td>
-                    <td>Kontak_Penerima</td>
+                    <td>{{ $rd->penerima }}</td>
+                    <td>{{ $rd->kontak_penerima }}</td>
                 </tr>
             @endforeach
        </tbody>
@@ -132,5 +141,7 @@
         }
     };
 </script>
+
+
 
 @endsection

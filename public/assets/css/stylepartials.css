@@ -16,6 +16,10 @@
     margin-left:27px;
 }
 
+.wow{
+    width: auto;
+}
+
 .filter .dropdown-item:hover {
     background-color: #3B4B65;
   }
@@ -129,7 +133,7 @@
 
 .alert-container1 {
     display: flex;
-    width:50%;
+    width:100%;
     align-items: center;
     padding: 10px 20px;
     background-color: #03A13B; /* Warna merah */
@@ -151,5 +155,40 @@
 /* CSS untuk mengatur warna latar belakang baris genap */
 .waduh tr:nth-child(even) {
     background-color: #ffffff;
+}
+
+/* Atur lebar kolom dengan class */
+table {
+    width: 100%; /* Lebar tabel 100% dari container */
+    border-collapse: collapse; /* Menggabungkan batas sel */
+}
+
+th, td {
+    padding: 8px; /* Padding untuk sel */
+    text-align: center; /* Teks rata kiri */
+    border-bottom: 1px solid #ddd; /* Garis bawah untuk setiap baris */
+}
+
+/* Lebar kolom sesuai kebutuhan Anda */
+/* Misalnya, dua kolom dengan lebar tetap */
+/* Tambahkan CSS untuk kolom nomor */
+th:nth-child(1),
+td:nth-child(1) {
+    width: 25px; /* Lebar kolom nomor */
+    text-align: center; /* Teks rata tengah */
+    font-size: 12px; /* Ukuran teks lebih kecil */
+    padding: 4px; /* Padding yang lebih kecil */
+}
+
+/* Contoh CSS untuk kolom lainnya (kolom data) */
+th:nth-child(2),
+td:nth-child(2) {
+    width: 200px; /* Lebar kolom data lainnya */
+    /* Gaya lain sesuai kebutuhan Anda */
+}
+
+.waw{
+    margin-left: 30px;
+    width: 100%;
 }
 

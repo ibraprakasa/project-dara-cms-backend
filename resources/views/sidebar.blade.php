@@ -11,7 +11,7 @@
             DARA
         </a>
     </div>
-    <div class="sidebar-wrapper" style="background-color:#3B4B65; overflow:hidden; height:680px">
+    <div class="sidebar-wrapper" style="background-color:#3B4B65; overflow:hidden; height:100vh">
         <ul class="nav">
             <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
                 <a href="{{ route('dashboard') }}" style="color: white !important; font-weight:bold;">

@@ -15,9 +15,9 @@ class RiwayatAmbil extends Model
     protected $table = 'riwayatambil';
     protected $guarded = [];
 
-    protected $fillable = [
-          'pendonor_id',
-    ];
+    // protected $fillable = [
+    //       'pendonor_id',
+    // ];
 
 
 }

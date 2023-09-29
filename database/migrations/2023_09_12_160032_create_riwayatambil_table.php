@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('riwayatambil', function (Blueprint $table) {
             $table->id('id_riwayat');
-            $table->integer('id_pendonor');
+            $table->unsignedBigInteger('pendonor_id');
             $table->integer('jumlah_ambil');
-            $table->datetime('tanggal_ambil');
+            $table->date('tanggal_ambil');
             $table->string('penerima');
             $table->string('kontak_penerima');
             $table->timestamps();

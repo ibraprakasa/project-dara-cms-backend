@@ -23,15 +23,15 @@
     <div class="col"></div>
 </div>
 
-<div class="content">
+<div class="content" id="search-results">
     <div class="tes1" id="filterpendonor" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
         <div class="filter btn-group">
-            <form action="/kelolaakun" method="GET">
+            <form action="/kelolaakun" method="GET" style="display: flex;">
                 <input class="btn" type="search" name="search" placeholder="Cari Pendonor..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
+                <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+                    <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
+                </button>
             </form>
-            <button type="button" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
-                <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
-            </button>
         </div>
 
         <div class="filter btn-group">
@@ -40,10 +40,28 @@
                 <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
             </button>
 
-            <button class="btn btn-secondary" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+            <button class="btn btn-secondary" data-toggle="modal" data-target=".tambahpendonor" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
                 Tambah
             </button>
 
+        </div>
+
+        <div class="filter btn-group wow">
+            @if(session('error'))
+            <div class="alert-container">
+                <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+                <div>
+                    {{ session('error') }}
+                </div>
+            </div>
+            @elseif(session('success'))
+            <div class="alert-container1 success">
+                <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+                <div>
+                    {{ session('success') }}
+                </div>
+            </div>
+            @endif
         </div>
     </div>
     <table id="tabelpendonor" class="table table-bordered" style="display:none;text-align:center">
@@ -55,7 +73,7 @@
                 <th scope="col">Tgl Lahir</th>
                 <th scope="col">Jenis Kelamin</th>
                 <th scope="col">Goldar</th>
-                <th scope="col">BB</th>
+                <th scope="col">Berat</th>
                 <th scope="col">Kontak</th>
                 <th scope="col">Email</th>
                 <th scope="col">Alamat</th>
@@ -99,11 +117,12 @@
 
     <div class="tes2" id="filteruser" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
         <div class="filter btn-group">
-            <input class="btn" type="text" placeholder="Cari User..." style="background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
-            </input>
-            <button type="button" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
-                <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
-            </button>
+            <form action="/kelolaakun" method="GET" style="display: flex;">
+                <input class="btn" type="search" name="search" placeholder="Cari User..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
+                <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+                    <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
+                </button>
+            </form>
         </div>
 
         <div class="filter btn-group">
@@ -112,10 +131,27 @@
                 <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
             </button>
 
-            <button class="btn btn-secondary" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+            <button class="btn btn-secondary" data-toggle="modal" data-target=".tambahuser" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
                 Tambah
             </button>
 
+        </div>
+        <div class="filter btn-group wow">
+            @if(session('error'))
+            <div class="alert-container">
+                <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+                <div>
+                    {{ session('error') }}
+                </div>
+            </div>
+            @elseif(session('success'))
+            <div class="alert-container1 success">
+                <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+                <div>
+                    {{ session('success') }}
+                </div>
+            </div>
+            @endif
         </div>
     </div>
     <table id="tabeluser" class="table table-bordered" style="text-align:center">
@@ -150,8 +186,8 @@
                     </button>
                 </td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target=".infopendonor">
-                        <i class="bi bi-info-square" style="color:black;"></i>
+                    <button class="custom-button" data-toggle="modal" data-target="#editkatasandi{{ $row->id }}">
+                        <i class="bi bi-file-earmark-lock" style="color:black;"></i>
                     </button>
                 </td>
             </tr>
@@ -334,7 +370,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="password">Password</label>
-                        <input class="kolom form-control" name="password" type="text" id="password" placeholder="******">
+                        <input class="kolom form-control" name="password" type="password" id="password" placeholder="******">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="alamat">Alamat</label>
@@ -342,18 +378,18 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="kontak">Email</label>
-                        <input class="kolom form-control" name="email_pendonor" type="email" id="email" placeholder="ex : ibraprakasa5@gmail.com">
+                        <input class="kolom form-control" name="email" type="email" id="email" placeholder="ex : ibraprakasa5@gmail.com">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="kontak">Kontak</label>
-                        <input class="kolom form-control" name="kontak_pendonor" type="number" id="kontak" placeholder="ex : 082235221771">
+                        <input class="kolom form-control" name="nohp" type="number" id="kontak" placeholder="ex : 082235221771">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="role">Role</label>
-                        <select class="kolom form-control" id="jekel" name="role_id">
-                            <option class="kolom form-control" value="-" selected>-</option>
-                            <option class="kolom form-control" value="1">Superadmin</option>
-                            <option class="kolom form-control" value="2">Admin</option>
+                        <select class="kolom form-control" name="role_id" id="kontak">
+                            @foreach($roles as $role)
+                            <option class="kolom form-control" value="{{ $role->id }}">{{ $role->role_name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -373,7 +409,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Edit Pendonor</h5>
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Edit User</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"">
               <span aria-hidden=" true">&times;</span>
                 </button>
@@ -383,32 +419,31 @@
                 <div class="modal-body">
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="nama">Nama</label>
-                        <input class="kolom form-control" name="nama" type="text" id="nama" value="{{ $row->nama }}">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="password">Password</label>
-                        <input class="kolom form-control" name="password" type="text" id="password" value="{{ $row->password }}">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="kontak">Kontak</label>
-                        <input class="kolom form-control" name="kontak_pendonor" type="number" id="kontak" value="{{ $row->kontak_pendonor }}">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="email">Email</label>
-                        <input class="kolom form-control" name="email_pendonor" type="email" id="email" value="{{ $row->email_pendonor }}">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="tanggallahir">Tanggal Lahir</label>
-                        <input class="kolom form-control" name="tanggal_lahir" type="date" id="tanggallahir" value="{{ $row->tanggal_lahir }}">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="beratbadan">Berat Badan</label>
-                        <input class="kolom form-control" name="berat_badan" type="text" id="beratbadan" value="{{ $row->berat_badan }}" required>
+                        <input class="kolom form-control" name="name" type="text" id="nama" value="{{ $row->name }}">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="alamat">Alamat</label>
-                        <textarea class="kolom form-control" name="alamat_pendonor" id="alamat" rows="3">{{ $row->alamat_pendonor }}</textarea>
+                        <textarea class="kolom form-control" name="alamat" id="alamat" rows="3">{{ $row->alamat }}</textarea>
                     </div>
+                    <div class="form-group" style="color:black; font-weight:bold">
+                        <label for="email">Email</label>
+                        <input class="kolom form-control" name="email" type="email" id="email" value="{{ $row->email }}">
+                    </div>
+                    <div class="form-group" style="color:black; font-weight:bold">
+                        <label for="kontak">Kontak</label>
+                        <input class="kolom form-control" name="nohp" type="number" id="kontak" value="{{ $row->nohp }}">
+                    </div>
+                    <div class="form-group" style="color:black; font-weight:bold">
+                        <label for="kontak">Role</label>
+                        <select class="kolom form-control" name="role_id" id="kontak">
+                            @foreach($roles as $role)
+                            <option class="kolom form-control" value="{{ $role->id }}">{{ $role->role_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Simpan</button>
@@ -447,6 +482,47 @@
 </div>
 @endforeach
 <!-- END MODAL -->
+
+<!-- MODAL PASSWORD-->
+@foreach($data1 as $row)
+<div class="modal fade" id="editkatasandi{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Ubah Kata Sandi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"">
+              <span aria-hidden=" true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('updatepassworduser', ['id' => $row->id]) }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group" style="color:black; font-weight:bold">
+                        <label for="email">Email</label>
+                        <input class="kolom form-control" name="email" type="email" id="email" value="{{ $row->email }}" readonly>
+                    </div>
+                    <div class="form-group" style="color:black; font-weight:bold">
+                        <label for="passwordlama">Kata Sandi Lama</label>
+                        <input class="kolom form-control" name="passwordlama" type="password" id="passwordlama">
+                    </div>
+                    <div class="form-group" style="color:black; font-weight:bold">
+                        <label for="passwordbaru">Kata Sandi Baru</label>
+                        <input class="kolom form-control" name="passwordbaru" type="password" id="passwordbaru">
+                    </div>
+                    <div class="form-group" style="color:black; font-weight:bold">
+                        <label for="passwordkonfirmasi">Konfirmasi Kata Sandi Baru</label>
+                        <input class="kolom form-control" name="passwordkonfirmasi" type="password" id="passwordkonfirmasi">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Simpan</button>
+                </div>
+            </form>
+            <!-- END MODAL -->
+        </div>
+    </div>
+</div>
+@endforeach
 
 <script>
     function tampilkanTabel(idTabel) {
@@ -501,6 +577,7 @@
         }
     };
 </script>
+
 
 
 @endsection

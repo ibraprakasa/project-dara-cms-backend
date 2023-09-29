@@ -71,6 +71,7 @@ Route::group(['middleware' => ['auth', 'checkrole:1']], function () {
     Route::post('insertuser', 'App\Http\Controllers\KelolaAkunController@insertuser')->name('insertuser');
     Route::post('updateuser/{id}', 'App\Http\Controllers\KelolaAkunController@updateuser')->name('updateuser');
     Route::delete('deleteuser/{id}', 'App\Http\Controllers\KelolaAkunController@deleteuser')->name('deleteuser');
+    Route::post('updatepassworduser/{id}', 'App\Http\Controllers\KelolaAkunController@updatepassworduser')->name('updatepassworduser');
     // END USER
 });
 

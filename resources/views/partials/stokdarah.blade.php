@@ -17,7 +17,7 @@
         <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div style="background-color:#D9D9D9" class="dropdown-menu">
-        <a class="dropdown-item" href="#">A</a>
+        <a class="dropdown-item" href="#" data-value="A">A</a>
         <a class="dropdown-item" href="#">AB</a>
         <a class="dropdown-item" href="#">B</a>
         <a class="dropdown-item" href="#">O</a>
@@ -30,7 +30,7 @@
         <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
     </button>
 
-    <button class="btn btn-secondary" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+    <button class="btn btn-secondary" data-toggle="modal" data-target=".tambahstokdarah" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
         Tambah
     </button>
 
@@ -42,14 +42,14 @@
         <i class="bi bi-file-minus" style="font-size: 20px; color: white;"></i>
     </button>
 
-    <button class="btn btn-secondary" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+    <button class="btn btn-secondary" data-toggle="modal" data-target=".ambilstokdarah" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
         Ambil
     </button>
 
 </div>
 
 <div class="content" style="margin-top: 20px;">
-    <table class="table table-bordered" style="text-align:center; width:1px;">
+    <table class="table table-bordered">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
             <tr>
                 <th scope="col">#</th>
@@ -135,11 +135,12 @@
                         <input class="kolom form-control" name="jumlah" type="number" id="jumlah" placeholder="ex : 5">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="penerimadonor">Penerima Donor</label>
-                        <input class="kolom form-control" name=“penerima” type="text" id="penerimadonor" placeholder="ex : Ibra Prakasa">
+                        <label for="jumlah">Penerima</label>
+                        <input class="kolom form-control" name="penerima" type="text" id="penerima" placeholder="ex : Ibra Prakasa">
+                    </div>
                     <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="kontak">Kontak Penerima</label>
-                        <input class="kolom form-control" name=“kontak” type="number" id="kontak" placeholder="ex : 082235221771">
+                        <label for="jumlah">Kontak</label>
+                        <input class="kolom form-control" name="kontak" type="number" id="kontak" placeholder="ex : 0822******">
                     </div>
                     <!-- <div class="form-group" style="color:black; font-weight:bold">
                         <label for="nomorpendonor">Nomor Pendonor</label>

@@ -77,6 +77,8 @@ class StokDarahController extends Controller
     {
         $kode_pendonor = $request->input('kode_pendonor');
         $jumlah = $request->input('jumlah');
+        $penerima = $request->input('penerima');
+        $kontak_penerima = $request->input('kontak');
 
         // Cari data stok darah berdasarkan kode pendonor yang dipilih
         $findPendonor = Pendonor::where('kode_pendonor', $kode_pendonor)->first();
@@ -98,8 +100,10 @@ class StokDarahController extends Controller
         //masukkan ke riwayat ambil
         RiwayatAmbil::create([
              'pendonor_id' => $findPendonor->id_pendonor,
-             'jumlah_donor' => $jumlah,
-             'tanggal_donor' => now()
+             'jumlah_ambil' => $jumlah,
+             'penerima' => $penerima,
+             'kontak_penerima' => $kontak_penerima,
+             'tanggal_ambil' => now()
         ]);
 
         // Setelah operasi insert atau update selesai, Anda dapat melakukan redirect

@@ -74,6 +74,9 @@ Coded by www.creative-tim.com
     });
   </script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  </script>
+
   <script>
     $(document).ready(function() {
 
@@ -89,7 +92,8 @@ Coded by www.creative-tim.com
         }
       });
     });
-  </script>
+</script>
+
   <script>
     // Mendapatkan nama halaman dari URL
     var currentPage = window.location.href;
@@ -124,27 +128,6 @@ Coded by www.creative-tim.com
       }
     }
   </script>
-  <script>
-    // Mendapatkan elemen input file
-    var inputGambar = document.getElementById('gambar');
-    // Mendapatkan elemen span keterangan
-    var keteranganGambar = document.getElementById('keterangan-gambar');
-
-    // Menambahkan event listener untuk memantau pemilihan file
-    inputGambar.addEventListener('change', function() {
-      if (inputGambar.files.length > 0) {
-        // Jika ada file yang dipilih, update teks keterangan
-        keteranganGambar.textContent = 'Gambar telah dipilih: ' + inputGambar.files[0].name;
-      } else {
-        // Jika tidak ada file yang dipilih, kembalikan teks keterangan ke default
-        keteranganGambar.textContent = 'Tidak ada gambar yang dipilih';
-      }
-    });
-  </script>
-
-
-
-
 
 </body>
 

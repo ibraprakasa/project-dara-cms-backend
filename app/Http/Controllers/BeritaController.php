@@ -7,9 +7,16 @@ use Illuminate\Http\Request;
 
 class BeritaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $data = Berita::all();
+        if($request->has('search')){
+            $search = $request->input('search');
+            $data = Berita::where('judul', 'LIKE', '%' . $search . '%')->get();
+        } else {
+            $data = Berita::all();
+        }
+
         return view('partials.berita', compact('data'));
     }
 
@@ -21,7 +28,7 @@ class BeritaController extends Controller
             $berita->save();
         }
         
-        return redirect()->route('berita');
+        return redirect()->route('berita')->with('success','Berita berhasil ditambahkan.');    
     }
 
     public function updateberita(Request $request, $id){
@@ -34,8 +41,7 @@ class BeritaController extends Controller
             $berita->save();
         }
 
-        return redirect()->route('berita');
-        
+        return redirect()->route('berita')->with('success','Berita berhasil diperbarui.');        
     }
 
     public function deleteberita($id){
@@ -43,6 +49,6 @@ class BeritaController extends Controller
 
         $berita ->delete();
 
-        return redirect()->route('berita');
+        return redirect()->route('berita')->with('success','Berita berhasil dihapus.');    
     }
 }
