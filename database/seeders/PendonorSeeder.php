@@ -23,7 +23,7 @@ class PendonorSeeder extends Seeder
             'berat_badan' => 47,
             'kontak_pendonor' => '08877541516',
             'email' => 'ibraprakasa5@gmail.com',
-            'alamat' => 'Padang Panjang',
+            'alamat_pendonor' => 'Padang Panjang',
             'password' => bcrypt('123456789'),
             'stok_darah_tersedia' =>0,
             'created_at' =>now(),
